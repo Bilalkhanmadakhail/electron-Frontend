@@ -1,0 +1,48 @@
+.tabs-container {
+    display: flex;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+  }
+  
+  .active {
+    font-weight: bold;
+  }
+  
+  .active-tab-line {
+    height: 2px;
+    width: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .active-tab-line.quarantine {
+    background-color: #FFFFFF;
+  }
+  
+  .active-tab-line.dynamic {
+    background-color: #FFFFFF;
+  }
+  
+  .active-tab-line.last {
+    background-color: #FFFFFF;
+  }
+  /* ////scroll bar */
+  /* CustomScrollbar.css */
+
+  
+  .tablecontainer::-webkit-scrollbar-thumb {
+    background-color: "#FFFFF";    
+    width: 3px;
+    /* stroke-width: 3px; */
+  }
+
+  
+    .tablecontainer::-webkit-scrollbar {
+      border-radius: 0px 0px 2.5px 0px;
+      background: rgba(205, 196, 196, 0.25);   width: 13px;     
+    }
+  
