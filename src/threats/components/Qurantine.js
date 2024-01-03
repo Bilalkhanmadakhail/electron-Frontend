@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
+import { Button } from '@grafana/ui';
 
 const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -209,15 +210,18 @@ const Qurantine = () => {
                             </div>
                           </div>
                           <div className="flex justify-end">
-                            <buttn
+                            <Button
                               onClick={handleClose}
-                              className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-6 "
+                              variant="primary"
+                              // className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-6 "
                             >
                               <p className="px-4 py-1 text-[12px] font-sansmed leading-4 text-[#fff]">
                                 {" "}
                                 Close
                               </p>
-                            </buttn>
+                            </Button>
+             
+                          
                           </div>
                         </Box>
                       </Modal>

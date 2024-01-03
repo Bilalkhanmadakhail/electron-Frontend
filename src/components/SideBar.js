@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 const SideBar = ({ isVisible ,activeItem, setActiveItem }) => {
-
-
+console.log(activeItem)
   const handleItemClick = (index) => {
     setActiveItem(index);
   };
-
   const listItemStyle = (index) => {
     return {
       backgroundColor: activeItem === index ? "#303030" : "",
@@ -43,7 +41,6 @@ const SideBar = ({ isVisible ,activeItem, setActiveItem }) => {
                     Overview
                   </p>
                 </div>
-          
               </li>
               <li>
                 <div className=" hover:text-white hover:border-r-[4px] hover:border-white group flex justify-start mb-4 cursor-pointer  active:text-white active:fill-white active:bg-opacity-[0.10] hover:fill-[white] w-full items-center px-8 py-2 hover:bg-white hover:bg-opacity-[0.10] text-[#FFFFFF99]  relative  fill-[#FFFFFF99] "   style={listItemStyle(1)}
@@ -56,12 +53,10 @@ const SideBar = ({ isVisible ,activeItem, setActiveItem }) => {
                   >
                     <path d="M11.0427 4.44444H14.5982L11.0427 0.888889V4.44444ZM4.47822 16C4.08355 16 3.74578 15.8593 3.46489 15.5778C3.18341 15.2969 3.04267 14.9591 3.04267 14.5644V12H15.4871V14.5644C15.4871 14.9591 15.3464 15.2969 15.0649 15.5778C14.784 15.8593 14.4462 16 14.0516 16H4.47822ZM0 10.2222V9.33333H18.5298V10.2222H0ZM3.04267 7.55556V1.43556C3.04267 1.04089 3.18341 0.703111 3.46489 0.422222C3.74578 0.140741 4.08355 0 4.47822 0H11.4871L15.4871 4V7.55556H3.04267Z" />
                   </svg>
-
                   <p className="text-sm pl-2 font-sanssem leading-4">
                     Scan Now
                   </p>
                 </div>
-        
               </li>
               <li>
                 <div style={listItemStyle(2)}
@@ -76,7 +71,6 @@ const SideBar = ({ isVisible ,activeItem, setActiveItem }) => {
                   </svg>
                   <p className="text-sm pl-2 font-sanssem leading-4">Threats</p>
                 </div>
-          
               </li>
               <li  className="">
                 <div style={listItemStyle(3)}
@@ -89,12 +83,10 @@ const SideBar = ({ isVisible ,activeItem, setActiveItem }) => {
                   >
                     <path d="M7.65 10.2256C7.65 10.0002 7.73955 9.78398 7.89896 9.62457C8.05837 9.46516 8.27457 9.37561 8.5 9.37561C8.72543 9.37561 8.94164 9.46516 9.10104 9.62457C9.26045 9.78398 9.35 10.0002 9.35 10.2256V12.7756C9.35 13.001 9.26045 13.2172 9.10104 13.3767C8.94164 13.5361 8.72543 13.6256 8.5 13.6256C8.27457 13.6256 8.05837 13.5361 7.89896 13.3767C7.73955 13.2172 7.65 13.001 7.65 12.7756V10.2256ZM8.5 5.55061C8.16185 5.55061 7.83755 5.68494 7.59844 5.92405C7.35933 6.16316 7.225 6.48746 7.225 6.82561C7.225 7.16376 7.35933 7.48806 7.59844 7.72717C7.83755 7.96628 8.16185 8.10061 8.5 8.10061C8.83815 8.10061 9.16245 7.96628 9.40156 7.72717C9.64067 7.48806 9.775 7.16376 9.775 6.82561C9.775 6.48746 9.64067 6.16316 9.40156 5.92405C9.16245 5.68494 8.83815 5.55061 8.5 5.55061ZM0 9.37561C0 7.12127 0.895533 4.95926 2.48959 3.3652C4.08365 1.77114 6.24566 0.87561 8.5 0.87561C10.7543 0.87561 12.9163 1.77114 14.5104 3.3652C16.1045 4.95926 17 7.12127 17 9.37561C17 11.63 16.1045 13.792 14.5104 15.386C12.9163 16.9801 10.7543 17.8756 8.5 17.8756C6.24566 17.8756 4.08365 16.9801 2.48959 15.386C0.895533 13.792 0 11.63 0 9.37561ZM8.5 2.57561C6.69653 2.57561 4.96692 3.29204 3.69167 4.56728C2.41643 5.84253 1.7 7.57214 1.7 9.37561C1.7 11.1791 2.41643 12.9087 3.69167 14.1839C4.96692 15.4592 6.69653 16.1756 8.5 16.1756C10.3035 16.1756 12.0331 15.4592 13.3083 14.1839C14.5836 12.9087 15.3 11.1791 15.3 9.37561C15.3 7.57214 14.5836 5.84253 13.3083 4.56728C12.0331 3.29204 10.3035 2.57561 8.5 2.57561Z" />
                   </svg>
-
                   <p className="text-sm pl-2 font-sanssem leading-4">
                     Information
                   </p>
                 </div>
-             
               </li>
             </ul>
           </div>
@@ -103,5 +95,4 @@ const SideBar = ({ isVisible ,activeItem, setActiveItem }) => {
     </>
   );
 };
-
 export default SideBar;
