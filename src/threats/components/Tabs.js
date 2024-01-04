@@ -57,7 +57,7 @@ export default function FullWidthTabs() {
   return (
     <>
       <div className="h-[77.5vh] px-[18px]  w-[100%] ">
-        <div className=" w-[100%] font-sanssem h-full bg-[#181B1F] rounded-[2.5px] border-[1px] border-color">
+        <div className=" w-[100%] font-sanssem h-full bg-[#181B1F] rounded-[2px] border-[1px]  border-color">
           <Box className=" ">
             <AppBar position="static ">
               <Tabs
@@ -66,14 +66,13 @@ export default function FullWidthTabs() {
                 indicatorColor="secondary"
                 textColor="inherit"
                 borderRadius="2.2px"
-             
+            
              
                 variant="fullWidth"
                 aria-label="full width tabs example"
                 sx={{
                   borderRadius:"2.2px",
                   borderBottom:"1px solid #676767",
-         
                   backgroundColor: "#181B1F",
                   "& .MuiTabs-indicator": {
                     backgroundColor: "white",
@@ -97,6 +96,7 @@ export default function FullWidthTabs() {
                     marginLeft: "8px",
                     paddingLeft: "31px",
                   }}
+                  disableRipple
                 />
                 <Tab
                   label="Dynamic Shielding"
@@ -108,6 +108,7 @@ export default function FullWidthTabs() {
                     alignItems: "start",
                     paddingLeft: "31px",
                   }}
+                  disableRipple
                 />
                 <Tab
                   label="USB Policy"
@@ -119,6 +120,7 @@ export default function FullWidthTabs() {
                     alignItems: "start",
                     paddingLeft: "31px",
                   }}
+                  disableRipple
                 />
               </Tabs>
             </AppBar>

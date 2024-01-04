@@ -11,7 +11,8 @@ import Typography from "@mui/material/Typography";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import { Button } from '@grafana/ui';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle, faDesktop, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -89,6 +90,9 @@ const Qurantine = () => {
   //for release threat
   const handleRelease = () => {
     setReleaseMessage(true);
+    setTimeout(() => {
+      setReleaseMessage(false);
+    }, 2000);
   };
   const closePopUP = () => {
     setReleaseMessage(false);
@@ -100,7 +104,7 @@ const Qurantine = () => {
 
   return (
     <div className="w-[100%]">
-      <table className="w-[100%]  h-[61vh] overflow-auto tablecontainer flex flex-col">
+      <table className="w-[100%]  h-[65vh] overflow-auto tablecontainer flex flex-col">
         <thead className="">
           <tr className="text-[16px] border-b-[1px] border-color py-5 w-[100%] px-9 text-[#BABABA] flex justify-start font-sanssem leading-4">
             <th className="justify-start flex w-[20%]">File Name</th>
@@ -114,8 +118,9 @@ const Qurantine = () => {
             data.map((item, index) => (
               <tr
                 key={index}
-                className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[14px] ${
-                  hoveredRowIndex === index ? "bg-[#111217] " : ""
+                className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[20px] ${
+                  hoveredRowIndex === index ? "bg-[#111217] " : "" 
+
                 }`}
                 onMouseEnter={() => setHoveredRowIndex(index)}
                 onMouseLeave={() => setHoveredRowIndex(null)}
@@ -131,15 +136,12 @@ const Qurantine = () => {
                 </td>
                 <td className="flex justify-end w-[30%]">
                   {hoveredRowIndex === index ? (
-                    <div className="flex items-center pb-0 ">
+                    <div className="flex items-center  ">
                       <div className="hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
                         <LightTooltip title="More info" onClick={handleOpen}>
                           <IconButton>
-                            <img
-                              className="hover:"
-                              src={information}
-                              alt="info"
-                            />
+                          
+                              <FontAwesomeIcon color="white"  icon={faInfoCircle} size="xs" />
                           </IconButton>
                         </LightTooltip>
                         <Modal
@@ -216,7 +218,7 @@ const Qurantine = () => {
                               <Button
                                 onClick={handleClose}
                                 
-                                className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-6 "
+                                className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-4 "
                               >
                                 <p className="  text-[12px] font-sansmed leading-4 text-[#fff]">
                                   {" "}
@@ -227,20 +229,17 @@ const Qurantine = () => {
                           </Box>
                         </Modal>
                       </div>
-                      <div className=" ml-5 hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
+                      <div className=" ml-5 hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6  hover:bg-[#3F3F3F]">
                         <LightTooltip title="Release" onClick={handleRelease}>
                           <IconButton>
-                            <img
-                              className=" cursor-pointer"
-                              src={monitor}
-                              alt="monitor"
-                            />
+                        
+                              <FontAwesomeIcon color="white" className=" cursor-pointer"  icon={faDesktop} size="xs" />
                           </IconButton>
                         </LightTooltip>
                       </div>
                     </div>
                   ) : (
-                    <p className="text-[12px] leading-4  font-sanssem text-[#fff]">
+                    <p className="text-[12px] leading-4 h-6 font-sanssem text-[#fff]">
                       {item.date}
                     </p>
                   )}
@@ -261,34 +260,26 @@ const Qurantine = () => {
       </table>
       {releaseMessage && (
         <div
-          className="release-message"
+          className="release-message z-40 "
           style={{
             position: "fixed",
-            bottom: "40px",
+            bottom: "20px",
             right: "40px",
-            backgroundColor: "white",
+            zIndex:999,
+            backgroundColor: "black",
             fontFamily: "sans",
             fontSize: "12px",
             fontStyle: "normal",
-            fontWeight: "600",
+            fontWeight: "400",
             lineHeight: "16px",
-            color: "#626262",
-            borderRadius: "2.5px",
-            border: "0.942px solid #C0C0C0",
-            padding: "10px",
+            // color: "#626262",
             display: "flex",
             alignItems: "center",
           }}
         >
-          <p>The threat was released</p>
-          <img
-            src={cross2}
-            alt="close"
-            color="black"
-            className=""
-            style={{ marginLeft: "10px", cursor: "pointer" }}
-            onClick={closePopUP}
-          />
+          
+          <p className="red-alert p-[10px]">The threat was released <span><FontAwesomeIcon onClick={closePopUP} className="cursor-pointer ml-3"  icon={faTimes} size="lg" />
+            </span></p>
         </div>
       )}
     </div>

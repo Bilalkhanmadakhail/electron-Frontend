@@ -44,7 +44,7 @@ const Information = () => {
                     1.6.1.9
                     </p>
                     <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                    a2b543b543bh53bh3b5j3bk3
+                     a2b543b543bh53bh3b5j3bk3
                     </p>
                   </div>
                 </div>

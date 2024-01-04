@@ -11,6 +11,11 @@ background-color: black;
 .css-19kzrtu{
   padding: 0px !important;
 }
+.black{
+  border-radius: 2.5px;
+border: 1.5px solid rgba(255, 255, 255, 0.10);
+background: rgba(255, 255, 255, 0.05);
+}
 .css-1gutb0u {
   color: white !important;
   margin-left: 4px !important;
@@ -24,6 +29,14 @@ background: rgba(47, 199, 64, 0.25);
   border-radius: 2.5px;
 border: 2px solid rgba(231, 5, 2, 0.50);
 background: rgba(255, 0, 0, 0.10);
+}
+.red-alert{
+  padding: 8px 16px;
+  display: flex;
+  background-color: rgba(209, 14, 92, 0.15);
+  border-style: solid;
+  border-color: rgba(255, 82, 134, 0.25);
+  border-width: 1px;
 }
 .button{
   border-radius: 14px;
@@ -60,4 +73,5 @@ background: rgba(255, 255, 255, 0.25);
   src: url('../src/assets/fonts/Inter-Bold.ttf');
 
 }
+
 
