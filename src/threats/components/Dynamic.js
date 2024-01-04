@@ -159,7 +159,7 @@ const Dynamic = () => {
           }}
         >
           <p className="red-alert p-[10px]">
-            The threat was released{" "}
+            Access was allowed{" "}
             <span>
               <FontAwesomeIcon
                 onClick={closePopUP}
