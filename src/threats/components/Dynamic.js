@@ -96,7 +96,7 @@ const Dynamic = () => {
             <tr
               key={index}
               className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[14px] ${
-                hoveredRowIndex === index ? "bg-[#1E1E1E] " : ""
+                hoveredRowIndex === index ? "bg-[#111217] " : ""
               }`}
               onMouseEnter={() => setHoveredRowIndex(index)}
               onMouseLeave={() => setHoveredRowIndex(null)}

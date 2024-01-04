@@ -12,6 +12,7 @@ import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import { Button } from '@grafana/ui';
 
+
 const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -96,6 +97,7 @@ const Qurantine = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   return (
     <div className="w-[100%]">
       <table className="w-[100%]  h-[61vh] overflow-auto tablecontainer flex flex-col">
@@ -108,144 +110,153 @@ const Qurantine = () => {
           </tr>
         </thead>
         <tbody className="w-[100%] ">
-          {data.map((item, index) => (
-            <tr
-              key={index}
-              className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[14px] ${
-                hoveredRowIndex === index ? "bg-[#1E1E1E] " : ""
-              }`}
-              onMouseEnter={() => setHoveredRowIndex(index)}
-              onMouseLeave={() => setHoveredRowIndex(null)}
-            >
-              <td className="text-[12px] flex justify-start w-[20%] font-sanssem text-[#fff]">
-                {item.fileName}
-              </td>
-              <td className="text-[12px] leading-4 flex justify-start w-[30%] font-sanssem text-[#fff]">
-                {item.hash}
-              </td>
-              <td className="text-[12px] leading-4 flex justify-start w-[20%] font-sanssem text-opacity-50 text-[#fff]">
-                {item.path}
-              </td>
-              <td className="flex justify-end w-[30%]">
-                {hoveredRowIndex === index ? (
-                  <div className="flex items-center pb-0 ">
-                    <div className="hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
-                      <LightTooltip title="More info" onClick={handleOpen}>
-                        <IconButton>
-                          <img
-                            className="hover:"
-                            src={information}
-                            alt="info"
-                          />
-                        </IconButton>
-                      </LightTooltip>
-                      <Modal
-                        keepMounted
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="keep-mounted-modal-title"
-                        aria-describedby="keep-mounted-modal-description"
-                      >
-                        <Box sx={style}>
-                          <Typography
-                            id="keep-mounted-modal-title"
-                            variant="h6"
-                            component="h2"
-                            fontFamily="sans"
-                            display="flex"
-                            marginTop="14px"
-                            paddingX="37px"
-                            justifyContent="space-between"
-                            color="white"
-                          >
-                            Threat Info
+          {data && data.length > 0 ? (
+            data.map((item, index) => (
+              <tr
+                key={index}
+                className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[14px] ${
+                  hoveredRowIndex === index ? "bg-[#111217] " : ""
+                }`}
+                onMouseEnter={() => setHoveredRowIndex(index)}
+                onMouseLeave={() => setHoveredRowIndex(null)}
+              >
+                <td className="text-[12px] flex justify-start w-[20%] font-sanssem text-[#fff]">
+                  {item.fileName}
+                </td>
+                <td className="text-[12px] leading-4 flex justify-start w-[30%] font-sanssem text-[#fff]">
+                  {item.hash}
+                </td>
+                <td className="text-[12px] leading-4 flex justify-start w-[20%] font-sanssem text-opacity-50 text-[#fff]">
+                  {item.path}
+                </td>
+                <td className="flex justify-end w-[30%]">
+                  {hoveredRowIndex === index ? (
+                    <div className="flex items-center pb-0 ">
+                      <div className="hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
+                        <LightTooltip title="More info" onClick={handleOpen}>
+                          <IconButton>
                             <img
-                              onClick={handleClose}
-                              className="cursor-pointer"
-                              src={cross}
+                              className="hover:"
+                              src={information}
+                              alt="info"
                             />
-                          </Typography>
-                          <div className="border-t my-[18px] px-10 border-b border-white border-opacity-50">
-                            <div className="  flex items-center">
-                              <div className="w-[40%] mt-[18px]">
-                                <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                  File Name
-                                </p>
-                                <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                  uid
-                                </p>
-                                <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                  Hash
-                                </p>
-                                <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                  File Extension
-                                </p>
-                                <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                  threat
-                                </p>
-                                <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                  Timestamp
-                                </p>
-                              </div>
-                              <div className="w-[60%] mt-[18px]">
-                                <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                  eicar.txt
-                                </p>
-                                <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                  a2b543b543bh53bh3b5j3bk3
-                                </p>
-                                <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                  a2b543b543bh53bh3b5j3bk3
-                                </p>
-                                <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                  .txt
-                                </p>
-                                <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                  EICAR-AV-Test
-                                </p>
-                                <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                  30 October, 2023 09:14:31 AM
-                                </p>
+                          </IconButton>
+                        </LightTooltip>
+                        <Modal
+                          keepMounted
+                          open={open}
+                          onClose={handleClose}
+                          aria-labelledby="keep-mounted-modal-title"
+                          aria-describedby="keep-mounted-modal-description"
+                        >
+                          <Box sx={style}>
+                            <Typography
+                              id="keep-mounted-modal-title"
+                              variant="h6"
+                              component="h2"
+                              fontFamily="sans"
+                              display="flex"
+                              marginTop="14px"
+                              paddingX="37px"
+                              justifyContent="space-between"
+                              color="white"
+                            >
+                              Threat Info
+                              <img
+                                onClick={handleClose}
+                                className="cursor-pointer"
+                                src={cross}
+                              />
+                            </Typography>
+                            <div className="border-t my-[18px] px-10 border-b border-white border-opacity-50">
+                              <div className="  flex items-center">
+                                <div className="w-[40%] mt-[18px]">
+                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
+                                    File Name
+                                  </p>
+                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
+                                    uid
+                                  </p>
+                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
+                                    Hash
+                                  </p>
+                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
+                                    File Extension
+                                  </p>
+                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
+                                    threat
+                                  </p>
+                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
+                                    Timestamp
+                                  </p>
+                                </div>
+                                <div className="w-[60%] mt-[18px]">
+                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
+                                    eicar.txt
+                                  </p>
+                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
+                                    a2b543b543bh53bh3b5j3bk3
+                                  </p>
+                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
+                                    a2b543b543bh53bh3b5j3bk3
+                                  </p>
+                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
+                                    .txt
+                                  </p>
+                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
+                                    EICAR-AV-Test
+                                  </p>
+                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
+                                    30 October, 2023 09:14:31 AM
+                                  </p>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="flex justify-end">
-                            <Button
-                              onClick={handleClose}
-                              variant="primary"
-                              // className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-6 "
-                            >
-                              <p className="px-4 py-1 text-[12px] font-sansmed leading-4 text-[#fff]">
-                                {" "}
-                                Close
-                              </p>
-                            </Button>
-             
-                          
-                          </div>
-                        </Box>
-                      </Modal>
+                            <div className="flex justify-end">
+                              <Button
+                                onClick={handleClose}
+                                
+                                className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-6 "
+                              >
+                                <p className="  text-[12px] font-sansmed leading-4 text-[#fff]">
+                                  {" "}
+                                  Close
+                                </p>
+                              </Button>
+                            </div>
+                          </Box>
+                        </Modal>
+                      </div>
+                      <div className=" ml-5 hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
+                        <LightTooltip title="Release" onClick={handleRelease}>
+                          <IconButton>
+                            <img
+                              className=" cursor-pointer"
+                              src={monitor}
+                              alt="monitor"
+                            />
+                          </IconButton>
+                        </LightTooltip>
+                      </div>
                     </div>
-                    <div className=" ml-5 hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
-                      <LightTooltip title="Release" onClick={handleRelease}>
-                        <IconButton>
-                          <img
-                            className=" cursor-pointer"
-                            src={monitor}
-                            alt="monitor"
-                          />
-                        </IconButton>
-                      </LightTooltip>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-[12px] leading-4  font-sanssem text-[#fff]">
-                    {item.date}
-                  </p>
-                )}
+                  ) : (
+                    <p className="text-[12px] leading-4  font-sanssem text-[#fff]">
+                      {item.date}
+                    </p>
+                  )}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td
+                colSpan="4"
+                className="text-[12px] font-sanssem leading-4 text-[#fff]"
+              >
+                No data available
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
       {releaseMessage && (

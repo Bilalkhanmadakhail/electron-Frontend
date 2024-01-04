@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/Sidebar2";
 import NavBar from "../components/NavBar";
 import ScanNow from "./components/ScanNow";
 const Index = ({ onSetActiveItem,  onSetSidebarVisible }) => {
@@ -17,16 +17,16 @@ const Index = ({ onSetActiveItem,  onSetSidebarVisible }) => {
     onSetActiveItem(newActiveItem);
   };
 
-  const main = sidebarVisible ? "84%" : "100%";
-  const sidebarWidth = sidebarVisible ? "16%" : "0%";
+  // const main = sidebarVisible ? "84%" : "100%";
+  // const sidebarWidth = sidebarVisible ? "16%" : "0%";
 
   return (
     <>
       <div className="flex w-[100%]">
-        <div style={{ width: sidebarWidth }}>
+        <div>
           <SideBar isVisible={sidebarVisible} activeItem={activeItem} setActiveItem={updateActiveItem} />
         </div>
-        <div style={{ width: main }}>
+        <div className="w-[100%]">
           <NavBar onToggleSidebar={toggleSidebar} activeItem={activeItem} />
           <ScanNow />
         </div>

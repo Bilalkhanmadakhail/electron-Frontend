@@ -1,17 +1,37 @@
 import React, { useState } from "react";
-import hamburger from "../assets/hamburger.svg";
-import arrow from "../assets/arrow.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const Header = ({ onToggleSidebar, activeItem }) => {
+const Header = ({ activeItem }) => {
   const itemNames = ["Overview", "Scan Now", "Threats", "Information"];
+
   return (
     <>
-      <div className="flex justify-between mt-4 bg-[#121212] items-center px-4 py-3">
+      <div className="flex justify-between  bg-[#111217] items-center px-4 py-3">
         <div className="flex items-center">
-          <img onClick={onToggleSidebar} src={hamburger} alt="hamburger" className="cursor-pointer" />
-          <p className="font-sanssem text-[17px] ml-4 tracking-[1.6px] text-[#fff]">Home</p>
-          <img src={arrow} alt="arrow" className="mx-[10px] cursor-pointer transform " />
-          <p className="font-sanssem text-[17px] ml-4 tracking-[1.6px] text-[#fff]"> {itemNames[activeItem]}</p>
+          {/* <img
+            src={hamburger}
+            alt="hamburger"
+            className="cursor-pointer"
+     
+          /> */}
+          <p
+            style={{ color: "white" }}
+            className="font-sanssem my-custom-text text-[14px] ml-8 tracking-[.6px] text-[#fff]"
+          >
+            Home
+          </p>
+        
+          <FontAwesomeIcon
+            color="white"
+            className="mx-[10px] cursor-pointer transform "
+            icon={faAngleRight}
+            size="lg"
+          />
+          <p className="font-sanssem text-[14px] mx-2 my-2 tracking-[.6px] text-[#fff]">
+            {" "}
+            {itemNames[activeItem]}
+          </p>
         </div>
       </div>
     </>

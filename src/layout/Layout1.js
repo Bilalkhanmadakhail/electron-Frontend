@@ -23,8 +23,8 @@ const Layout = () => {
 
   return (
     <>
-      <div className="h-screen overflow-hidden bg-[#000]">
-        <div className="w-[100%] bg-black">
+      <div className="h-screen overflow-hidden bg-[#111217]">
+        <div className="w-[100%] bg-[#181B1F]">
           <Header />
         </div>
         <div className="w-[100%] flex ">

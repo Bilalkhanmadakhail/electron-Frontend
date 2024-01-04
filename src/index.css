@@ -11,24 +11,53 @@ background-color: black;
 .css-19kzrtu{
   padding: 0px !important;
 }
+.css-1gutb0u {
+  color: white !important;
+  margin-left: 4px !important;
+}
+.green{
+  border-radius: 2.5px;
+border: 2px solid rgba(47, 199, 64, 0.25);
+background: rgba(47, 199, 64, 0.25);
+}
+.red{
+  border-radius: 2.5px;
+border: 2px solid rgba(231, 5, 2, 0.50);
+background: rgba(255, 0, 0, 0.10);
+}
+.button{
+  border-radius: 14px;
+border: 1px solid rgba(255, 255, 255, 0.25);
+background: rgba(255, 255, 255, 0.25);
+}
+.css-td06pi-button{
+  /* border-radius: 10px !important; */
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  height: 91% !important;
+  top: 52px !important;
+  overflow: hidden;
+}
 @font-face {
   font-family: 'sans';
-  src: url('../src/assets/fonts/PublicSans-Regular.ttf');
+  src: url('../src/assets/fonts/Inter-Regular.ttf');
 
 }
 @font-face {
   font-family: 'sans-med';
-  src: url('../src/assets/fonts/PublicSans-Medium.ttf');
+  src: url('../src/assets/fonts/Inter-Medium.ttf');
 
 }
 @font-face {
   font-family: 'sans-sem';
-  src: url('../src/assets/fonts/PublicSans-SemiBold.ttf');
+  src: url('../src/assets/fonts/Inter-SemiBold.ttf');
 
 }
 @font-face {
   font-family: 'sans-bold';
-  src: url('../src/assets/fonts/PublicSans-Bold.ttf');
+  src: url('../src/assets/fonts/Inter-Bold.ttf');
 
 }
 
