@@ -3,7 +3,7 @@ import JustGage from "justgage";
 import gradient from "../../assets/gradient.png";
 import { useEffect, useRef } from "react";
 import "./overview.css";
-import LineChart from "./LineChart1";
+import LineChart1 from "./LineChart1";
 const Overview = () => {
   const hasCpuInitialized = useRef(false);
   const hasAgentCpuInitialized = useRef(false);
@@ -36,12 +36,12 @@ const Overview = () => {
         max: 100,
         symbol: "%",
         pointerOptions: {
-          toplength: 8,
+          toplength: 20,
           bottomlength: -20,
           bottomwidth: 6,
           color: "#8E8E93",
         },
-        gaugeWidthScale: 0.9,
+        gaugeWidthScale: 0.9 ,
         counter: true,
         relativeGaugeSize: true,
         hideMinMax: true,
@@ -55,24 +55,25 @@ const Overview = () => {
         <div className=" w-[100%]  h-full bg-[#17191C] rounded-[2.5px]  ">
           <div className="graph flex pt-[14px]  px-[17px]">
             <div className="w-[60%]   h-[75vh]">
-              <div className="w-[100%] h-[40%] flex justify-between">
+              <div className="w-[100%] h-[50%] flex justify-between">
                 <div className="border w-[49.3%] bg-[#1F2126] flex justify-center flex-col items-center border-color h-[100%]">
-                  <p className="text-[#B9C0C9] text-[14px] font-Inter font-normal my-1">
+                  <p className="text-[#B9C0C9] mb-6 text-[14px] font-Inter font-normal my-1">
                     CPU
                   </p>
                   <img className="image w-[60%]" src={gradient} />
                   <div id="g4" className="gauge w-[67%] mt-[-27%]"></div>
                 </div>
                 <div className="border w-[49.3%] bg-[#1F2126] flex justify-center flex-col items-center border-color h-[100%]">
-                  <p className="text-[#B9C0C9]   text-[14px] font-Inter font-normal  my-1 flex items-center justify-center">
+                  <p className="text-[#B9C0C9]  mb-6 text-[14px] font-Inter font-normal  my-1 flex items-center justify-center">
                     Agent CPU{" "}
                   </p>
                   <img className="image w-[60%]" src={gradient} />
                   <div id="g5" className="gauge w-[67%] mt-[-27%]"></div>
                 </div>
               </div>
-              <div className="line-graph  text-sm font-Inter font-normal bg-[#1F2126] mt-[10px] h-[58%] border border-color ">
-                {/* <p className="mt-2 text-[#B9C0C9]">Events - Last 24h</p> */}
+              <div className="line-graph  text-sm font-Inter font-normal bg-[#1F2126] mt-[10px] h-[48%] border border-color ">
+                <p className="mt-2 text-sm font-Inter font-normal text-[#B9C0C9]">Events - Last 24h</p>
+                <LineChart1/>
               </div>
             </div>
             <div className="w-[40%] ml-[10px]  h-[75vh]">

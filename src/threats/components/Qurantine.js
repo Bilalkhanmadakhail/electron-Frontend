@@ -48,11 +48,7 @@ const Qurantine = () => {
 
   const toggleDiv = (index) => {
     setOpenRowIndex(openRowIndex === index ? null : index);
-    if (openRowIndex !== index) {
-      setTimeout(() => {
-        setOpenRowIndex(null);
-      }, 2000);
-    }
+   
   };
 
   return (
@@ -82,7 +78,9 @@ const Qurantine = () => {
                   <div className="absolute ">
                     <FontAwesomeIcon
                       color="#C2C1D2"
-                      className=" w- cursor-pointer transform "
+                      className={`w- cursor-pointer transform ${
+                        openRowIndex === index ? "rotate-90" : ""
+                      }`}
                       icon={faAngleRight}
                       size="xs"
                       onClick={() => toggleDiv(index)}

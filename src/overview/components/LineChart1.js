@@ -17,7 +17,7 @@ const LineChart = () => {
       {
         data: [0, 110, 90, 160, 95, 170, 100, 160, 20, 20, 20, 105, 140,145,150],
         backgroundColor: "transparent",
-        borderColor: "#CCC",
+        borderColor: "#B9C0C9",
         pointBorderColor: "transparent",
         pointBorderWidth: 4,
         color:"#fff",
@@ -52,8 +52,8 @@ const LineChart = () => {
   };
 
   return (
-    <div className="border-color mx-32" >
-        <p className="text-white text-sm font-sans flex justify-end items-end">Sysmon Events</p>
+    <div  className=" w-[400px] h-[150px] mx-auto mt-5 " >
+        <p className="text-[#B9C0C9] text-sm font-sans flex justify-end  items-end">Sysmon Events</p>
       <Line data={data}  options={options} />
     </div>
   );

@@ -53,12 +53,17 @@ export default function FullWidthTabs() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+///new tab component 
+const [activeTab, setActiveTab] = useState(1);
 
+const changeTab = (tabNumber) => {
+  setActiveTab(tabNumber);
+};
   return (
     <>
       <div className="h-[77.5vh] px-[18px] pt-[14px]  w-[100%] ">
         <div className=" w-[100%] font-sanssem h-full bg-[#1F2126] rounded-[2px] border-[1px]  border-color">
-          <Box className=" ">
+          {/* <Box className=" ">
             <AppBar position="static ">
               <Tabs
                 value={value}
@@ -154,7 +159,38 @@ export default function FullWidthTabs() {
                 <UsbPolicy />
               </TabPanel>
             </div>
-          </Box>
+          </Box> */}
+          <div className="flex border-b pt-2 border-color-2">
+        <div
+          className={`cursor-pointer  text-[14px] font-Inter font-medium py-2 px-4 ${
+            activeTab === 1 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-35'
+          }`}
+          onClick={() => changeTab(1)}
+        >
+         Quarantined Files
+        </div>
+        <div
+          className={`cursor-pointer text-[#B9C0C9]  text-[14px] font-Inter font-medium py-2 px-4 ${
+            activeTab === 2 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-35'
+          }`}
+          onClick={() => changeTab(2)}
+        >
+         Dynamic Shielding
+        </div>
+        <div
+          className={`cursor-pointer text-[#B9C0C9] text-[14px] font-Inter font-medium py-2 px-4 ${
+            activeTab === 3 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-35'
+          }`}
+          onClick={() => changeTab(3)}
+        >
+          USB Policy
+        </div>
+      </div>
+      <div className="mt-4">
+        {activeTab === 1 && <div><Qurantine /></div>}
+        {activeTab === 2 && <div><Dynamic /></div>}
+        {activeTab === 3 && <div><UsbPolicy /></div>}
+      </div>
         </div>
       </div>
     </>
