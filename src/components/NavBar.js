@@ -1,37 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ activeItem }) => {
-  const itemNames = ["Overview", "Scan Now", "Threats", "Information"];
+  const itemNames = ["Overview", "Threats", "Information"];
 
   return (
     <>
-      <div className="flex justify-between  bg-[#111217] items-center px-4 py-3">
+      <div className="flex justify-between border-b-[1px] border-white border-opacity-[0.05] bg-[#1F2126] items-center px-4 py-2">
         <div className="flex items-center">
-          {/* <img
-            src={hamburger}
-            alt="hamburger"
-            className="cursor-pointer"
-     
-          /> */}
-          <p
-            style={{ color: "white" }}
-            className="font-sanssem my-custom-text text-[14px] ml-8 tracking-[.6px] text-[#fff]"
-          >
-            Home
-          </p>
-        
-          <FontAwesomeIcon
-            color="white"
-            className="mx-[10px] cursor-pointer transform "
-            icon={faAngleRight}
-            size="lg"
-          />
-          <p className="font-sanssem text-[14px] mx-2 my-2 tracking-[.6px] text-[#fff]">
-            {" "}
-            {itemNames[activeItem]}
-          </p>
+          {activeItem === 0 ? (
+            // Render this content when activeItem is 0
+            <p className="text-[14px] font-Inter font-normal mx-8 my-2 text-[#C2C1D2]">
+              {itemNames[activeItem]}
+            </p>
+          ) : (
+            // Render this content when activeItem is not 0
+            <>
+              <p className="text-[14px] font-Inter font-normal ml-8 my-2 text-[#C2C1D2] ">
+                Overview
+              </p>
+              <FontAwesomeIcon
+                color="white"
+                className="mx-[10px] cursor-pointer transform"
+                icon={faAngleRight}
+                size="xs"
+              />
+              <p className="text-[14px] font-Inter font-normal  my-2 text-[#C2C1D2]">
+                {itemNames[activeItem]}
+              </p>
+            </>
+          )}
         </div>
       </div>
     </>

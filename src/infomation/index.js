@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import Information from "./components/Information";
 const Index = ({ onSetActiveItem, onSetSidebarVisible }) => {
   const [sidebarVisible, setSidebarVisible] = useState(true);
-  const [activeItem, setActiveItem] = useState(3);
+  const [activeItem, setActiveItem] = useState(2);
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
@@ -16,9 +16,6 @@ const Index = ({ onSetActiveItem, onSetSidebarVisible }) => {
     setActiveItem(newActiveItem);
     onSetActiveItem(newActiveItem);
   };
-
-  // const main = sidebarVisible ? "84%" : "100%";
-  // const sidebarWidth = sidebarVisible ? "16%" : "0%";
   return (
     <>
       <div className="flex w-[100%]">

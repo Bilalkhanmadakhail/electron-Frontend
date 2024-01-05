@@ -56,8 +56,8 @@ export default function FullWidthTabs() {
 
   return (
     <>
-      <div className="h-[77.5vh] px-[18px]  w-[100%] ">
-        <div className=" w-[100%] font-sanssem h-full bg-[#181B1F] rounded-[2px] border-[1px]  border-color">
+      <div className="h-[77.5vh] px-[18px] pt-[14px]  w-[100%] ">
+        <div className=" w-[100%] font-sanssem h-full bg-[#1F2126] rounded-[2px] border-[1px]  border-color">
           <Box className=" ">
             <AppBar position="static ">
               <Tabs
@@ -65,22 +65,24 @@ export default function FullWidthTabs() {
                 onChange={handleChange}
                 indicatorColor="secondary"
                 textColor="inherit"
-                borderRadius="2.2px"
-            
-             
+                borderRadius="2.5px"
                 variant="fullWidth"
                 aria-label="full width tabs example"
                 sx={{
-                  borderRadius:"2.2px",
-                  borderBottom:"1px solid #676767",
-                  backgroundColor: "#181B1F",
+                  borderRadius: "2.2px",
+                  borderBottom: "1px solid rgba(194, 193, 210, 0.05)",
+                  borderOpacity: 0.5,
+
+                  backgroundColor: "#1F2126",
                   "& .MuiTabs-indicator": {
-                    backgroundColor: "white",
+                    // border-radius: 5px;
+                    background: "#C2C1D2",
                   },
                   "& .MuiTab-root": {
                     color: "white",
                     marginTop: "19px",
-                    fontFamily: "sans",
+                    fontFamily: "Inter",
+                    fontSize: "14px",
                     textTransform: "none",
                   },
                 }}
@@ -93,7 +95,7 @@ export default function FullWidthTabs() {
                     display: "flex",
                     justifyContent: "start",
                     alignItems: "start",
-                    marginLeft: "8px",
+                    // marginLeft: "8px",
                     paddingLeft: "31px",
                   }}
                   disableRipple
@@ -102,7 +104,7 @@ export default function FullWidthTabs() {
                   label="Dynamic Shielding"
                   {...a11yProps(1)}
                   style={{
-                    minWidth: "25%",
+                    Width: "25%",
                     display: "flex",
                     justifyContent: "start",
                     alignItems: "start",

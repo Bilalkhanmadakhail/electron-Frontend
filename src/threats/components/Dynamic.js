@@ -1,31 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import "./threats.css";
-import information from "../../assets/information.svg";
-import lock from "../../assets/lock.svg";
-import cross from "../../assets/cross.svg";
-import cross2 from "../../assets/cross2.svg";
-import IconButton from "@mui/material/IconButton";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faTimes } from "@fortawesome/free-solid-svg-icons";
-const LightTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: theme.palette.common.white,
-    color: "rgba(0, 0, 0, 0.87)",
-    boxShadow: theme.shadows[1],
-    fontSize: 11,
-    cursor: "Pointer",
-    // marginLeft: 20,
-    // marginBottom: 20,
-    fontWeight: "600",
-  },
-}));
 
 const Dynamic = () => {
   const data = [
@@ -54,123 +28,78 @@ const Dynamic = () => {
       ports: "8686    8674",
       date: "11:39",
     },
-    {
-      ip: "192.168.0.1",
-      ports: "8686    8674",
-      date: "11:39",
-    },
-    {
-      ip: "192.168.0.1",
-      ports: "8686    8674",
-      date: "11:39",
-    },
   ];
-  const [releaseMessage, setReleaseMessage] = useState(false); // New state
-  const [hoveredRowIndex, setHoveredRowIndex] = useState(null);
-  //for release threat
-  const handleRelease = () => {
-    setReleaseMessage(true);
-    setTimeout(() => {
-      setReleaseMessage(false);
-    }, 2000);
-  };
-  const closePopUP = () => {
-    setReleaseMessage(false);
-  };
-  //for the modale
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
   return (
     <div className="w-[100%]">
-      <table className="w-[100%]  h-[65vh] overflow-auto  tablecontainer flex flex-col">
-        <thead className="">
-          <tr className="text-[16px] border-b-[1px] border-color py-5 w-[100%] px-9 text-[#BABABA] flex justify-start font-sanssem leading-4">
-            <th className="justify-start flex w-[20%]">IP</th>
-            <th className="justify-start flex w-[30%]">Ports</th>
-            <th className="justify-start flex w-[25%]"></th>
+      <table className="w-[100%]  h-[63vh]  overflow-auto  tablecontainer flex flex-col">
+        <thead className="h-[15%]">
+          <tr className="text-[14px]  py-5 w-[100%] px-8 text-[#C2C1D2] flex justify-start  leading-4">
+            <th className="justify-start  font-Inter font-medium flex w-[20%]">
+              IP
+            </th>
+            <th className="justify-start font-Inter font-medium flex w-[30%]">
+              Ports
+            </th>
+            <th className="justify-end font-Inter font-medium flex w-[50%]">
+              Date
+            </th>
           </tr>
         </thead>
-        <tbody className="w-[100%] ">
+        <tbody className="w-[100%] h-[70%] ">
           {data.map((item, index) => (
             <tr
               key={index}
-              className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[14px] ${
-                hoveredRowIndex === index ? "bg-[#111217] " : ""
-              }`}
-              onMouseEnter={() => setHoveredRowIndex(index)}
-              onMouseLeave={() => setHoveredRowIndex(null)}
+              className="relative  flex flex-row px-7 border-color-2 w-[100%] py-[14px] "
             >
-              <td className="text-[12px] flex justify-start w-[20%] font-sanssem text-[#fff]">
+              <td className="text-[12px] flex justify-start w-[20%] font-Inter font-normal text-[#C2C1D2]">
                 {item.ip}
               </td>
-              <td className="text-[12px] leading-4 flex justify-start w-[30%] font-sanssem text-[#fff]">
+              <td className="text-[12px] leading-4 flex justify-start w-[30%] font-Inter font-normal text-[#C2C1D2]">
                 {item.ports}
               </td>
-              <td className="text-[12px] leading-4 flex justify-start w-[20%] font-sanssem text-opacity-50 text-[#fff]">
-                {item.path}
-              </td>
-              <td className="flex justify-end w-[30%]">
-                {hoveredRowIndex === index ? (
-                  <div className="flex items-center pb-0 ">
-                    <div className=" ml-5 hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
-                      <LightTooltip
-                        title="Resume Connection"
-                        onClick={handleRelease}
-                      >
-                        <IconButton>
-                          <FontAwesomeIcon
-                            color="white"
-                            className="cursor-pointer"
-                            icon={faLock}
-                            size="xs"
-                          />
-                        </IconButton>
-                      </LightTooltip>
-                    </div>
-                  </div>
-                ) : (
-                  <p className="text-[12px] leading-4 h-6 font-sanssem text-[#fff]">
-                    {item.date}
-                  </p>
-                )}
+
+              <td className="flex justify-end w-[50%]">
+                <p className="text-[12px] leading-4 pr-2  font-Inter font-normal text-[#C2C1D2]">
+                  {item.date}
+                </p>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
-      {releaseMessage && (
-        <div
-          className="release-message z-40 "
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "40px",
-            zIndex: 999,
-            backgroundColor: "black",
-            fontFamily: "sans",
-            fontSize: "12px",
-            fontStyle: "normal",
-            fontWeight: "400",
-            lineHeight: "16px",
-            // color: "#626262",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <p className="red-alert p-[10px]">
-            Access was allowed{" "}
-            <span>
-              <FontAwesomeIcon
-                onClick={closePopUP}
-                className="cursor-pointer ml-3"
-                icon={faTimes}
-                size="lg"
-              />
-            </span>
-          </p>
+        <div className=" w-[100%] h-[15%] flex items-center justify-center">
+          <div className=" flex justify-center items-center">
+            <button className="bg-[#17191C] translate-x-[180] flex justify-center items-center  pl-2 pr-3 py-1 rounded-[2.2px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                class="css-1d3xu67-Icon rotated-icon"
+              >
+                <path d="M14.83,11.29,10.59,7.05a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L12.71,12,9.17,15.54a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l4.24-4.24A1,1,0,0,0,14.83,11.29Z"></path>
+              </svg>
+            </button>
+            <button className="bg-[#486ED6] mx-4 px-2 rounded-[2.2px]">
+              1
+            </button>
+            <button className="bg-[#17191C] flex justify-center items-center  pl-3 pr-2 py-1 rounded-[2.2px]">
+              <svg
+                className="translate-x-[180]"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                class="css-1d3xu67-Icon"
+              >
+                <path d="M14.83,11.29,10.59,7.05a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L12.71,12,9.17,15.54a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l4.24-4.24A1,1,0,0,0,14.83,11.29Z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-      )}
+      </table>
     </div>
   );
 };

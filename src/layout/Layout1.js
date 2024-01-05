@@ -23,16 +23,16 @@ const Layout = () => {
 
   return (
     <>
-      <div className="h-screen overflow-hidden bg-[#111217]">
-        <div className="w-[100%] bg-[#181B1F]">
+      <div className="h-screen overflow-hidden bg-[#17191C]">
+        <div className="w-[100%] ">
           <Header />
         </div>
         <div className="w-[100%] flex ">
           <div className="w-[100%]">
             {activeItem === 0 && <OverView onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible}  />}
-            {activeItem === 1 && <ScanNow onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible}  />}
-            {activeItem === 2 && <Threats onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible}  />}
-            {activeItem === 3 && <Information onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible} />}
+            {/* {activeItem === 1 && <ScanNow onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible}  />} */}
+            {activeItem === 1 && <Threats onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible}  />}
+            {activeItem === 2 && <Information onSetActiveItem={handleSetActiveItem} onSetSidebarVisible={handleSetSidebarVisible} />}
           </div>
         </div>
       </div>

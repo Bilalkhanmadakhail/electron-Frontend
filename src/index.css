@@ -6,7 +6,35 @@
 background-color: black;
 }
 .border-color{
-  border-color:  rgba(255, 255, 255, 0.25);
+  border-radius: 2.5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+
+}
+.border-color-2{
+  border-radius: 2.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+
+}
+.css-emng1w-MuiTabs-root .MuiTab-root{
+  margin-top: 2px !important;
+  color: #C2C1D2 !important;
+}
+
+.css-emng1w-MuiTabs-root .MuiTabs-indicator {
+  background: #C2C1D2;
+  border-radius: 5px;
+  height: 4px;
+}
+header {
+  background-color: #1F2126 !important;
+  
+}
+.card{
+  border-radius: 2.5px;
+border: 1px solid rgba(255, 255, 255, 0.05);
+background: rgba(217, 217, 217, 0.03);
 }
 .css-19kzrtu{
   padding: 0px !important;
@@ -37,6 +65,11 @@ background: rgba(255, 0, 0, 0.10);
   background: rgba(123, 201, 131, 0.25);
   border-width: 1px;
 }
+.line-graph div canvas
+{
+  height: 100px !important;
+  width: 400px !important;
+}
 .button{
   border-radius: 14px;
 border: 1px solid rgba(255, 255, 255, 0.25);
@@ -52,8 +85,34 @@ background: rgba(255, 255, 255, 0.25);
   top: 52px !important;
   overflow: hidden;
 }
+
+
+/* .icon-container {
+  cursor-pointer p-4 bg-blue-500 text-white inline-block;
+} */
+
+.animated-div {
+  display: hidden;
+  width: 100%;
+  height: 20vh;
+  background-color: red;
+  overflow: hidden;
+  transition: all;
+  animation-duration: 300
+  
+ /* hidden w-full h-20vh bg-gray-200 overflow-hidden transition-all duration-300 ease-in-out; */
+}
+
+.animated-div.open {
+ display: block;
+}
+/* Add this CSS to your stylesheet */
+.rotated-icon {
+  transform: rotate(180deg);
+}
+
 @font-face {
-  font-family: 'sans';
+  font-family: 'Inter';
   src: url('../src/assets/fonts/Inter-Regular.ttf');
 
 }

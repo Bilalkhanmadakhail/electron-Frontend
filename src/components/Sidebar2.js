@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import hamburger from "../assets/hamburger.svg";
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import sagabars from "../assets/sagaBars.svg";
 
 export default function TemporaryDrawer({
   isVisible,
@@ -30,7 +27,6 @@ export default function TemporaryDrawer({
   };
   const listItemStyle = (index) => {
     return {
-   
       borderLeft: activeItem === index ? "4px solid red" : "",
     };
   };
@@ -58,19 +54,11 @@ export default function TemporaryDrawer({
                   <p className="text-sm  font-sans  leading-4">Overview</p>
                 </div>
               </li>
+
               <li>
                 <div
-                  className=" hover:text-white  group flex justify-start mb-4 cursor-pointer hover:rounded-[4px] hover:underline active:text-white active:fill-white active:bg-opacity-[0.10] hover:fill-[white] w-full items-center px-2 py-2 hover:bg-white hover:bg-opacity-[0.10] text-[#FFFFFF99]  relative  fill-[#FFFFFF99] "
                   style={listItemStyle(1)}
                   onClick={() => handleItemClick(1)}
-                >
-                  <p className="text-sm  font-sans  leading-4">Scan Now</p>
-                </div>
-              </li>
-              <li>
-                <div
-                  style={listItemStyle(2)}
-                  onClick={() => handleItemClick(2)}
                   className=" hover:text-white   group flex justify-start mb-4 cursor-pointer  hover:underline  hover:fill-[white] w-full items-center px-2 py-2 hover:rounded-[4px] hover:bg-white hover:bg-opacity-[0.10] text-[#FFFFFF99]  relative  fill-[#FFFFFF99] "
                 >
                   <p className="text-sm  font-sans  leading-4">Threats</p>
@@ -78,8 +66,8 @@ export default function TemporaryDrawer({
               </li>
               <li className="">
                 <div
-                  style={listItemStyle(3)}
-                  onClick={() => handleItemClick(3)}
+                  style={listItemStyle(2)}
+                  onClick={() => handleItemClick(2)}
                   className=" hover:text-white  group flex justify-start mb-4 cursor-pointer   hover:underline  hover:fill-[white] w-full items-center px-2 py-2 hover:rounded-[4px] hover:bg-white hover:bg-opacity-[0.10] text-[#FFFFFF99]  relative  fill-[#FFFFFF99] "
                 >
                   <p className="text-sm  font-sans  leading-4">Information</p>
@@ -96,10 +84,11 @@ export default function TemporaryDrawer({
     <div>
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
-         
-<FontAwesomeIcon color="white"  className="absolute  mt-[21px] ml-4"
-            src={hamburger}
-            onClick={toggleDrawer(anchor, true)} icon={faBars} size="lg" />
+          <img
+            src={sagabars}
+            onClick={toggleDrawer(anchor, true)}
+            className="absolute w-[19px] h-[19px] mt-[17px] ml-5"
+          />
           <Drawer
             anchor={anchor}
             open={state[anchor]}

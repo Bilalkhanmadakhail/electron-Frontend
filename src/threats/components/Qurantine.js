@@ -1,45 +1,8 @@
 import React, { useState } from "react";
 import "./threats.css";
-import information from "../../assets/information.svg";
-import monitor from "../../assets/monitor.svg";
-import cross from "../../assets/cross.svg";
-import cross2 from "../../assets/cross2.svg";
-import IconButton from "@mui/material/IconButton";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
-import { Button } from '@grafana/ui';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faDesktop, faTimes} from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const LightTooltip = styled(({ className, ...props }) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))(({ theme }) => ({
-  [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: theme.palette.common.white,
-    color: "rgba(0, 0, 0, 0.87)",
-    boxShadow: theme.shadows[1],
-    fontSize: 11,
-    cursor: "Pointer",
-    marginLeft: 20,
-    marginBottom: 20,
-    fontWeight: "600",
-  },
-}));
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "60%",
-  bgcolor: "#2A2A2A",
-  borderRadius: "5px",
-  // border: '2px solid #000',
-  boxShadow: 24,
-  // p: 4,
-};
 const Qurantine = () => {
   const data = [
     {
@@ -66,18 +29,7 @@ const Qurantine = () => {
       path: "C:\\Users\\YourUsername\\Documents\\Pro..",
       date: "11:39",
     },
-    {
-      fileName: "eicar.txt",
-      hash: "1a79a4d60de6718e8e5b326e338ae533",
-      path: "C:\\Users\\YourUsername\\Documents\\Pro..",
-      date: "11:39",
-    },
-    {
-      fileName: "eicar.txt",
-      hash: "1a79a4d60de6718e8e5b326e338ae533",
-      path: "C:\\Users\\YourUsername\\Documents\\Pro..",
-      date: "11:39",
-    },
+
     {
       fileName: "eicar.txt",
       hash: "1a79a4d60de6718e8e5b326e338ae533",
@@ -85,166 +37,122 @@ const Qurantine = () => {
       date: "11:39",
     },
   ];
-  const [releaseMessage, setReleaseMessage] = useState(false); // New state
-  const [hoveredRowIndex, setHoveredRowIndex] = useState(null);
-  //for release threat
-  const handleRelease = () => {
-    setReleaseMessage(true);
-    setTimeout(() => {
-      setReleaseMessage(false);
-    }, 2000);
+  const [openRowIndex, setOpenRowIndex] = useState(null);
+
+  // const [isDivOpen, setIsDivOpen] = useState(false);
+
+  // const toggleDiv = () => {
+  //   setIsDivOpen(!isDivOpen);
+  // };
+  // const [openRowIndex, setOpenRowIndex] = useState(null);
+
+  const toggleDiv = (index) => {
+    setOpenRowIndex(openRowIndex === index ? null : index);
+    if (openRowIndex !== index) {
+      setTimeout(() => {
+        setOpenRowIndex(null);
+      }, 2000);
+    }
   };
-  const closePopUP = () => {
-    setReleaseMessage(false);
-  };
-  //for the modale
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <div className="w-[100%]">
-      <table className="w-[100%]  h-[65vh] overflow-auto tablecontainer flex flex-col">
-        <thead className="">
-          <tr className="text-[16px] border-b-[1px] border-color py-5 w-[100%] px-9 text-[#BABABA] flex justify-start font-sanssem leading-4">
-            <th className="justify-start flex w-[20%]">File Name</th>
-            <th className="justify-start flex w-[30%]">Hash</th>
-            <th className="justify-start flex w-[20%]">Path</th>
-            <th className="justify-start flex w-[25%]"></th>
+      <table className="w-[100%]  h-[63vh]  flex flex-col">
+        <thead className="h-[15%] ">
+          <tr className="text-[14px]  py-5 w-[100%] px-8 text-[#C2C1D2] flex justify-start  leading-4">
+            <th className="justify-start font-Inter font-medium flex w-[20%]">
+              File Name
+            </th>
+            <th className="justify-start font-Inter font-medium flex w-[30%]">
+              Hash
+            </th>
+            <th className="justify-start font-Inter font-medium flex w-[20%]">
+              Path
+            </th>
+            <th className=" font-Inter font-medium flex  justify-end w-[30%]">
+              Date
+            </th>
           </tr>
         </thead>
-        <tbody className="w-[100%] ">
+        <tbody className="w-[100%] h-[70%]  relative">
           {data && data.length > 0 ? (
             data.map((item, index) => (
-              <tr
-                key={index}
-                className={`border-b-[1px] relative  flex flex-row px-7 border-color w-[100%] py-[20px] ${
-                  hoveredRowIndex === index ? "bg-[#111217] " : "" 
-
-                }`}
-                onMouseEnter={() => setHoveredRowIndex(index)}
-                onMouseLeave={() => setHoveredRowIndex(null)}
-              >
-                <td className="text-[12px] flex justify-start w-[20%] font-sanssem text-[#fff]">
-                  {item.fileName}
-                </td>
-                <td className="text-[12px] leading-4 flex justify-start w-[30%] font-sanssem text-[#fff]">
-                  {item.hash}
-                </td>
-                <td className="text-[12px] leading-4 flex justify-start w-[20%] font-sanssem text-opacity-50 text-[#fff]">
-                  {item.path}
-                </td>
-                <td className="flex justify-end w-[30%]">
-                  {hoveredRowIndex === index ? (
-                    <div className="flex items-center  ">
-                      <div className="hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6 hover:bg-[#3F3F3F]">
-                        <LightTooltip title="More info" onClick={handleOpen}>
-                          <IconButton>
-                          
-                              <FontAwesomeIcon color="white"  icon={faInfoCircle} size="xs" />
-                          </IconButton>
-                        </LightTooltip>
-                        <Modal
-                          keepMounted
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="keep-mounted-modal-title"
-                          aria-describedby="keep-mounted-modal-description"
-                        >
-                          <Box sx={style}>
-                            <Typography
-                              id="keep-mounted-modal-title"
-                              variant="h6"
-                              component="h2"
-                              fontFamily="sans"
-                              display="flex"
-                              marginTop="14px"
-                              paddingX="37px"
-                              justifyContent="space-between"
-                              color="white"
-                            >
-                              Threat Info
-                              <img
-                                onClick={handleClose}
-                                className="cursor-pointer"
-                                src={cross}
-                              />
-                            </Typography>
-                            <div className="border-t my-[18px] px-10 border-b border-white border-opacity-50">
-                              <div className="  flex items-center">
-                                <div className="w-[40%] mt-[18px]">
-                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                    File Name
-                                  </p>
-                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                    uid
-                                  </p>
-                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                    Hash
-                                  </p>
-                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                    File Extension
-                                  </p>
-                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                    threat
-                                  </p>
-                                  <p className="text-[12px] font-sans leading-4 text-[#949494] pb-5">
-                                    Timestamp
-                                  </p>
-                                </div>
-                                <div className="w-[60%] mt-[18px]">
-                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                    eicar.txt
-                                  </p>
-                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                    a2b543b543bh53bh3b5j3bk3
-                                  </p>
-                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                    a2b543b543bh53bh3b5j3bk3
-                                  </p>
-                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                    .txt
-                                  </p>
-                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                    EICAR-AV-Test
-                                  </p>
-                                  <p className="text-[12px] font-sanssem leading-4 text-[#fff] pb-5">
-                                    30 October, 2023 09:14:31 AM
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="flex justify-end">
-                              <Button
-                                onClick={handleClose}
-                                
-                                className="rounded-[2.5px] cursor-pointer mb-[14px] mr-[18px] border border-white bg-[#2A2A2A] w-16  h-4 "
-                              >
-                                <p className="  text-[12px] font-sansmed leading-4 text-[#fff]">
-                                  {" "}
-                                  Close
-                                </p>
-                              </Button>
-                            </div>
-                          </Box>
-                        </Modal>
-                      </div>
-                      <div className=" ml-5 hover:rounded-[5px] w-[30px] cursor-pointer flex justify-center items-center h-6  hover:bg-[#3F3F3F]">
-                        <LightTooltip title="Release" onClick={handleRelease}>
-                          <IconButton>
-                        
-                              <FontAwesomeIcon color="white" className=" cursor-pointer"  icon={faDesktop} size="xs" />
-                          </IconButton>
-                        </LightTooltip>
-                      </div>
-                    </div>
-                  ) : (
-                    <p className="text-[12px] leading-4 h-6 font-sanssem text-[#fff]">
+              <div key={index}>
+                <tr className=" relative  flex flex-row pl-3 pr-7 border-color-2 w-[100%] py-[14px] ">
+                  <div className="absolute ">
+                    <FontAwesomeIcon
+                      color="#C2C1D2"
+                      className=" w- cursor-pointer transform "
+                      icon={faAngleRight}
+                      size="xs"
+                      onClick={() => toggleDiv(index)}
+                    />
+                  </div>
+                  <td className="text-[12px] ml-4 flex justify-start w-[20%] font-Inter font-normal text-[#C2C1D2]">
+                    {item.fileName}
+                  </td>
+                  <td className="text-[12px] leading-4 flex justify-start w-[30%] font-Inter text-[#C2C1D2]">
+                    {item.hash}
+                  </td>
+                  <td className="text-[12px] leading-4 flex justify-start w-[20%] font-Inter font-normal  text-[#C2C1D2]">
+                    {item.path}
+                  </td>
+                  <td className="flex justify-end w-[30%]">
+                    <p className="text-[12px] leading-4 pr-2 font-Inter text-[#C2C1D2]">
                       {item.date}
                     </p>
-                  )}
-                </td>
-              </tr>
+                  </td>
+                </tr>
+
+                {openRowIndex === index && (
+                  <div className="bg-[#17191C] absolute w-full z-40">
+                    <div className=" flex-col flex justify-start pl-6 pr-4 ">
+                      <p className="text-[#C2C1D2] flex justify-between  pt-2 text-[14px] font-Inter font-normal  items-start text-opacity-75 ">
+                        Threats Info{" "}
+                        <FontAwesomeIcon
+                          color="#C2C1D2"
+                          className="ml-5 cursor-pointer"
+                          onClick={toggleDiv}
+                          icon={faTimes}
+                          size="lg"
+                        />
+                      </p>
+                      <div className="  w-[100%] font-Inter font-medium ">
+                        <div className="  flex justify-start items-start">
+                          <div className="w-[40%] flex items-start flex-col justify-start  mt-[18px]">
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              File Name
+                            </p>
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              uid
+                            </p>
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              Hash
+                            </p>
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              File Extension
+                            </p>
+                          </div>
+                          <div className="w-[60%] flex flex-col justify-start items-start mt-[18px]">
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              eciar.txt
+                            </p>
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              a2b543b543bh53bh3b5j3bk3
+                            </p>
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              .txt
+                            </p>
+                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                              EICAR-AV-Test
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             ))
           ) : (
             <tr>
@@ -257,31 +165,39 @@ const Qurantine = () => {
             </tr>
           )}
         </tbody>
-      </table>
-      {releaseMessage && (
-        <div
-          className="release-message z-40 "
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "40px",
-            zIndex:999,
-            backgroundColor: "black",
-            fontFamily: "sans",
-            fontSize: "12px",
-            fontStyle: "normal",
-            fontWeight: "400",
-            lineHeight: "16px",
-            // color: "#626262",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          
-          <p className="red-alert p-[10px]">The threat was released <span><FontAwesomeIcon onClick={closePopUP} className="cursor-pointer ml-3"  icon={faTimes} size="lg" />
-            </span></p>
+        <div className=" w-[100%] h-[15%] flex items-center justify-center">
+          <div className=" flex justify-center items-center">
+            <button className="bg-[#17191C] translate-x-[180] flex justify-center items-center  pl-2 pr-3 py-1 rounded-[2.2px]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                class="css-1d3xu67-Icon rotated-icon"
+              >
+                <path d="M14.83,11.29,10.59,7.05a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L12.71,12,9.17,15.54a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l4.24-4.24A1,1,0,0,0,14.83,11.29Z"></path>
+              </svg>
+            </button>
+            <button className="bg-[#486ED6] mx-4 px-2 rounded-[2.2px]">
+              1
+            </button>
+            <button className="bg-[#17191C] flex justify-center items-center  pl-3 pr-2 py-1 rounded-[2.2px]">
+              <svg
+                className="translate-x-[180]"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="white"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                class="css-1d3xu67-Icon"
+              >
+                <path d="M14.83,11.29,10.59,7.05a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L12.71,12,9.17,15.54a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l4.24-4.24A1,1,0,0,0,14.83,11.29Z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
-      )}
+      </table>
     </div>
   );
 };

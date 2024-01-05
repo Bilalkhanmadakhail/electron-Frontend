@@ -1,0 +1,35 @@
+#g4 svg path:nth-of-type(2) {
+    fill: #55944B !important;
+  }
+  #g4 svg path:nth-of-type(1) {
+    fill: #181B1F !important;
+  }
+  #g5 svg path:nth-of-type(2) {
+    fill: #55944B !important;
+  }
+  #g5 svg path:nth-of-type(1) {
+    fill: #181B1F !important;
+  }
+  #g4 svg text
+{
+  fill: #55944B !important;
+  font-size: 30px !important;
+  position: relative !important;
+  transform: translate(0, 14px) !important;
+}
+#g5 svg text
+{
+  fill: #55944B !important;
+  font-size: 30px !important;
+  position: relative !important;
+  transform: translate(0, 14px) !important;
+}
+
+
+
+
+
+
+
+
+

@@ -12,9 +12,7 @@ const Index = ({onSetActiveItem,  onSetSidebarVisible}) => {
     setActiveItem(newActiveItem);
     onSetActiveItem(newActiveItem);
   };
-  // const main = sidebarVisible ? "84%" : "100%";
-  // const sidebarWidth = sidebarVisible ? "16%" : "0%";
-  const [activeItem, setActiveItem] = useState(2);
+  const [activeItem, setActiveItem] = useState(1);
   return (
     <>
       <div className="flex w-[100%]">
