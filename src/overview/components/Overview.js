@@ -60,14 +60,14 @@ const Overview = () => {
                   <p className="text-[#B9C0C9] mb-6 text-[14px] font-Inter font-normal my-1">
                     CPU
                   </p>
-                  <img className="image w-[60%]" src={gradient} />
+                  <img className="image cursor-pointer w-[60%]" src={gradient} />
                   <div id="g4" className="gauge w-[67%] mt-[-27%]"></div>
                 </div>
                 <div className="border w-[49.3%] bg-[#1F2126] flex justify-center flex-col items-center border-color h-[100%]">
                   <p className="text-[#B9C0C9]  mb-6 text-[14px] font-Inter font-normal  my-1 flex items-center justify-center">
                     Agent CPU{" "}
                   </p>
-                  <img className="image w-[60%]" src={gradient} />
+                  <img className="image cursor-pointer w-[60%]" src={gradient} />
                   <div id="g5" className="gauge w-[67%] mt-[-27%]"></div>
                 </div>
               </div>

@@ -177,10 +177,10 @@ const Qurantine = () => {
                 <path d="M14.83,11.29,10.59,7.05a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41L12.71,12,9.17,15.54a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.29,1,1,0,0,0,.71-.29l4.24-4.24A1,1,0,0,0,14.83,11.29Z"></path>
               </svg>
             </button>
-            <button className="bg-[#486ED6] mx-4 px-2 rounded-[2.2px]">
+            <button className="bg-[#486ED6] text-[#B9C0C9] font-Inter font-semibold mx-4 px-2 rounded-[2.2px]">
               1
             </button>
-            <button className="bg-[#17191C] flex justify-center items-center  pl-3 pr-2 py-1 rounded-[2.2px]">
+            <button className="bg-[#17191C] flex justify-center items-center  pl-3 pr-2.5 py-1 rounded-[2.2px]">
               <svg
                 className="translate-x-[180]"
                 xmlns="http://www.w3.org/2000/svg"

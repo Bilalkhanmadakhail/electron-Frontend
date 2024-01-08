@@ -65,11 +65,11 @@ background: rgba(255, 0, 0, 0.10);
   background: rgba(123, 201, 131, 0.25);
   border-width: 1px;
 }
-.line-graph div canvas
+/* .line-graph div canvas
 {
   height: 100px !important;
   width: 400px !important;
-} 
+}  */
 .button{
   border-radius: 14px;
 border: 1px solid rgba(255, 255, 255, 0.25);

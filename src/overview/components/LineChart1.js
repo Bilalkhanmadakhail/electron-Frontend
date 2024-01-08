@@ -1,30 +1,27 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-} from "chart.js";
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from "chart.js";
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
 const LineChart = () => {
   const data = {
-    labels: ["",  "","",  "", "", "", "",  "", "", "", "", "","", "", ""],
+    labels: ["", "", "","", "", "", "", "", "", "", "", "", "", "", "", "", "",  ],
     datasets: [
       {
-        data: [0, 110, 90, 160, 95, 170, 100, 160, 20, 20, 20, 105, 140,145,150],
+        data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 2.2, 0.1,0.1, 0.1, 0.1, 0.1, 0.1,0.1],
         backgroundColor: "transparent",
-        borderColor: "#B9C0C9",
+        borderColor: "#E17373",
         pointBorderColor: "transparent",
         pointBorderWidth: 4,
-        color:"#fff",
-        tension:0.2 ,
+        color: "#fff",
+        tension: 0.16,
       },
     ],
   };
+
+  // Extract the last data point value
+  const lastPointValue = data.datasets[0].data[data.datasets[0].data.length - 1];
 
   const options = {
     plugins: {
@@ -38,11 +35,10 @@ const LineChart = () => {
       },
       y: {
         min: 0,
-        max: 300,
+        max: 6,
         ticks: {
-          stepSize: 100,
+          stepSize: 2,
           callback: (value) => value ,
-          color: (context) => (context.tick.value === 0 || context.tick.value === 300 ? '#808080' : '#808080'), // Change color based on value
         },
         grid: {
           borderDash: [10],
@@ -52,9 +48,9 @@ const LineChart = () => {
   };
 
   return (
-    <div  className=" w-[400px] h-[150px] mx-auto mt-5 " >
-        <p className="text-[#B9C0C9] text-sm font-sans flex justify-end  items-end">Sysmon Events</p>
-      <Line data={data}  options={options} />
+    <div className="ml-32" style={{ width: "350px", height: "350px",position:"relative",marginTop:"10px"  }}>
+      <p className="text-[#B9C0C9] font-Inter font-normal absolute text-[13px] top-[-3%] left-[100%] w-32    flex justify-end items-end"> Attacks Detected</p>
+      <Line data={data} options={options} />
     </div>
   );
 };

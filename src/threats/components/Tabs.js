@@ -163,7 +163,7 @@ const changeTab = (tabNumber) => {
           <div className="flex border-b pt-2 border-color-2">
         <div
           className={`cursor-pointer  text-[14px] font-Inter font-medium py-2 px-4 ${
-            activeTab === 1 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-35'
+            activeTab === 1 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-45'
           }`}
           onClick={() => changeTab(1)}
         >
@@ -171,7 +171,7 @@ const changeTab = (tabNumber) => {
         </div>
         <div
           className={`cursor-pointer text-[#B9C0C9]  text-[14px] font-Inter font-medium py-2 px-4 ${
-            activeTab === 2 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-35'
+            activeTab === 2 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-45'
           }`}
           onClick={() => changeTab(2)}
         >
@@ -179,7 +179,7 @@ const changeTab = (tabNumber) => {
         </div>
         <div
           className={`cursor-pointer text-[#B9C0C9] text-[14px] font-Inter font-medium py-2 px-4 ${
-            activeTab === 3 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-35'
+            activeTab === 3 ? 'border-b-4 border-[#B9C0C9] text-[#B9C0C9]' : ' text-white text-opacity-45'
           }`}
           onClick={() => changeTab(3)}
         >
