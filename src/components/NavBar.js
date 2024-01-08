@@ -11,13 +11,13 @@ const Header = ({ activeItem }) => {
         <div className="flex items-center">
           {activeItem === 0 ? (
             // Render this content when activeItem is 0
-            <p className="text-[14px] font-Inter font-normal mx-8 my-2 text-[#C2C1D2]">
+            <p className="text-[14px] font-Inter font-normal mx-8 my-2 text-[#B9C0C9]">
               {itemNames[activeItem]}
             </p>
           ) : (
             // Render this content when activeItem is not 0
             <>
-              <p className="text-[14px] font-Inter font-normal ml-8 my-2 text-[#C2C1D2] ">
+              <p className="text-[14px] font-Inter font-normal ml-8 my-2 text-[#B9C0C9] ">
                 Overview
               </p>
               <FontAwesomeIcon
@@ -26,7 +26,7 @@ const Header = ({ activeItem }) => {
                 icon={faAngleRight}
                 size="xs"
               />
-              <p className="text-[14px] font-Inter font-normal  my-2 text-[#C2C1D2]">
+              <p className="text-[14px] font-Inter font-normal  my-2 text-[#B9C0C9]">
                 {itemNames[activeItem]}
               </p>
             </>

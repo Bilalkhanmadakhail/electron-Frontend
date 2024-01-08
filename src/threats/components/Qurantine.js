@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./threats.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -38,24 +38,27 @@ const Qurantine = () => {
     },
   ];
   const [openRowIndex, setOpenRowIndex] = useState(null);
-
-  // const [isDivOpen, setIsDivOpen] = useState(false);
-
-  // const toggleDiv = () => {
-  //   setIsDivOpen(!isDivOpen);
-  // };
-  // const [openRowIndex, setOpenRowIndex] = useState(null);
-
+  const tableRef = useRef(null);
+  useEffect(() => {
+    scrollToBottom();
+  }, [data]);
   const toggleDiv = (index) => {
     setOpenRowIndex(openRowIndex === index ? null : index);
-   
+  };
+  const scrollToBottom = () => {
+    if (tableRef.current) {
+      tableRef.current.scrollTop = tableRef.current.scrollHeight;
+    }
   };
 
   return (
     <div className="w-[100%]">
-      <table className="w-[100%]  h-[63vh]  flex flex-col">
+      <table
+        ref={tableRef}
+        className="w-[100%]  h-[63vh]  overflow-auto tablecontainer flex flex-col"
+      >
         <thead className="h-[15%] ">
-          <tr className="text-[14px]  py-5 w-[100%] px-8 text-[#C2C1D2] flex justify-start  leading-4">
+          <tr className="text-[14px]  py-5 w-[100%] px-8 text-[#B9C0C9] flex justify-start  leading-4">
             <th className="justify-start font-Inter font-medium flex w-[20%]">
               File Name
             </th>
@@ -75,10 +78,10 @@ const Qurantine = () => {
             data.map((item, index) => (
               <div key={index}>
                 <tr className=" relative  flex flex-row pl-3 pr-7 border-color-2 w-[100%] py-[14px] ">
-                  <div className="absolute ">
+                  <div className="absolute  ">
                     <FontAwesomeIcon
                       color="#C2C1D2"
-                      className={`w- cursor-pointer transform ${
+                      className={`w- pb-[2px] cursor-pointer transform ${
                         openRowIndex === index ? "rotate-90" : ""
                       }`}
                       icon={faAngleRight}
@@ -86,17 +89,17 @@ const Qurantine = () => {
                       onClick={() => toggleDiv(index)}
                     />
                   </div>
-                  <td className="text-[12px] ml-4 flex justify-start w-[20%] font-Inter font-normal text-[#C2C1D2]">
+                  <td className="text-[12px] ml-4 flex justify-start w-[20%] font-Inter font-normal text-[#B9C0C9]">
                     {item.fileName}
                   </td>
-                  <td className="text-[12px] leading-4 flex justify-start w-[30%] font-Inter text-[#C2C1D2]">
+                  <td className="text-[12px] leading-4 flex justify-start w-[30%] font-Inter text-[#B9C0C9]">
                     {item.hash}
                   </td>
-                  <td className="text-[12px] leading-4 flex justify-start w-[20%] font-Inter font-normal  text-[#C2C1D2]">
+                  <td className="text-[12px] leading-4 flex justify-start w-[20%] font-Inter font-normal  text-[#B9C0C9]">
                     {item.path}
                   </td>
                   <td className="flex justify-end w-[30%]">
-                    <p className="text-[12px] leading-4 pr-2 font-Inter text-[#C2C1D2]">
+                    <p className="text-[12px] leading-4 pr-2 font-Inter text-[#B9C0C9]">
                       {item.date}
                     </p>
                   </td>
@@ -105,7 +108,7 @@ const Qurantine = () => {
                 {openRowIndex === index && (
                   <div className="bg-[#17191C] absolute w-full z-40">
                     <div className=" flex-col flex justify-start pl-6 pr-4 ">
-                      <p className="text-[#C2C1D2] flex justify-between  pt-2 text-[14px] font-Inter font-normal  items-start text-opacity-75 ">
+                      <p className="text-[#B9C0C9] flex justify-between  pt-2 text-[14px] font-Inter font-normal  items-start text-opacity-75 ">
                         Threats Info{" "}
                         <FontAwesomeIcon
                           color="#C2C1D2"
@@ -118,30 +121,30 @@ const Qurantine = () => {
                       <div className="  w-[100%] font-Inter font-medium ">
                         <div className="  flex justify-start items-start">
                           <div className="w-[40%] flex items-start flex-col justify-start  mt-[18px]">
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               File Name
                             </p>
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               uid
                             </p>
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               Hash
                             </p>
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               File Extension
                             </p>
                           </div>
                           <div className="w-[60%] flex flex-col justify-start items-start mt-[18px]">
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               eciar.txt
                             </p>
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               a2b543b543bh53bh3b5j3bk3
                             </p>
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               .txt
                             </p>
-                            <p className="text-[12px]  leading-4 text-[#C2C1D2] pb-4">
+                            <p className="text-[12px]  leading-4 text-[#B9C0C9] pb-4">
                               EICAR-AV-Test
                             </p>
                           </div>
@@ -201,3 +204,49 @@ const Qurantine = () => {
 };
 
 export default Qurantine;
+
+// import React, { useRef, useEffect, useState } from 'react';
+
+// const ScrollToBottom = () => {
+//   const messagesRef = useRef(null);
+//   const [messages, setMessages] = useState([
+//     "Message 1",
+//     "Message 2",
+//     "Message 1",
+//     "Message 2",
+//     "Message 1",
+//     "Message 2",
+//     "Message 1",
+//     "Message 2",
+//     "Message 1",
+//     "Message 2",
+//     // ... more messages
+//   ]);
+
+//   // Scroll to the bottom when messages change
+//   useEffect(() => {
+//     scrollToBottom();
+//   }, [messages]);
+
+//   // Function to scroll to the bottom
+//   const scrollToBottom = () => {
+//     if (messagesRef.current) {
+//       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+//     }
+//   };
+
+//   return (
+//     <div
+//       ref={messagesRef}
+//       className="h-64 overflow-auto border p-4"
+//     >
+//       {messages.map((message, index) => (
+//         <div key={index} className="mb-2">
+//           {message}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default ScrollToBottom;
